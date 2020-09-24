@@ -20,7 +20,6 @@ function addTask(e) {
 	if (taskInput.value === '') {
 		return alert('Please Fill Task input');
 	}
-	console.log('Everything is right');
 
 	let tasks = getTasks();
 	createLi(taskInput.value);
@@ -35,8 +34,6 @@ function removeTask(e) {
 		if (confirm('Are You Sure?')) {
 			const li = e.target.parentElement.parentElement;
 			li.remove();
-			console.log(li.textContent);
-			// Remove task from LS
 			removeTaskFromLocalStorage(li);
 		}
 	}
@@ -66,13 +63,11 @@ function filterTasks(e) {
 function getTasksFromLocalStorage(e) {
 	// const tasks = localStorage.getItem('tasks');
 	let tasks = getTasks();
-	console.log(tasks);
 	if (tasks.length > 0) {
 		tasks.forEach(function (task) {
 			createLi(task);
 		});
 	}
-	console.log(taskList.childNodes.length);
 	taskList;
 }
 
@@ -121,8 +116,6 @@ function removeTaskFromLocalStorage(taskItem) {
 }
 
 function decorateTask(e) {
-	console.log(e);
 	const decoration = e.target.style.textDecoration;
-
 	e.target.style.textDecoration = decoration ? '' : 'line-through';
 }
